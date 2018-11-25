@@ -1,0 +1,67 @@
+# make file for tpasm -- win32 version
+
+DEBUGGING=OFF
+
+OUTEXE=tpasm.exe
+
+CC=cl
+LINK=link
+
+# compiler options in use:
+#
+# /c	compile without linking
+# /O2	optimize for speed
+# /MD	use MSVCRT DLL
+# /W3	warning level 3
+# /TP	compile as c++
+#
+
+CC_FLAGS=/nologo /c /O2 /MD /W3 /TP /I "." /D strncasecmp=strnicmp /D strcasecmp=stricmp
+LINK_FLAGS=/nologo /subsystem:console /incremental:no /out:"$(OUTEXE)"
+
+OBJS=\
+	"globals.obj" \
+	"tpasm.obj" \
+	"memory.obj" \
+	"files.obj" \
+	"symbols.obj" \
+	"label.obj" \
+	"segment.obj" \
+	"pseudo.obj" \
+	"parser.obj" \
+	"expression.obj" \
+	"context.obj" \
+	"alias.obj" \
+	"macro.obj" \
+	"listing.obj" \
+	"outfile.obj" \
+	"processors.obj" \
+	"support.obj" \
+	"outfiles/intel_seg.obj" \
+	"outfiles/mot_seg.obj" \
+	"outfiles/text_sym.obj" \
+	"outfiles/sunplus_sym.obj" \
+	"processors/6805.obj" \
+	"processors/68hc11.obj" \
+	"processors/6502.obj" \
+	"processors/sunplus.obj" \
+	"processors/8051.obj" \
+	"processors/pic.obj" \
+	"processors/avr.obj" \
+	"processors/z80.obj"
+
+all : "$(OUTEXE)"
+
+clean:
+	del *.obj
+	del $(OUTEXE)
+
+cleanall:
+	del *.obj
+	del $(OUTEXE)
+
+"$(OUTEXE)" : $(OBJS)
+    $(LINK) $(LINK_FLAGS) $(OBJS)
+
+.c.obj:
+	$(CC) $(CC_FLAGS) $*.c /Fo$@

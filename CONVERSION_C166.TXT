@@ -1,0 +1,171 @@
+
+Things to consider when moving an existing code to tpasm:
+
+
+
+
+1.
+
+Change '$SEGMENTED' to 'SEGMENTED' and '$ASSUME' to 'ASSUME'.
+Add 'INCLUDE "REG_cputype.INC"' and all other header files needed.
+Also remove any dollarsigns /$/ that are placed inside numbers.
+
+If you get a lot of errors complaining about illegal addressing
+modes make sure that 'SEGMENTED' is followed by the needed
+'ASSUME'-s. A good start may be
+
+	ASSUME	DPP0:0x0000
+	ASSUME	DPP1:0x4000
+	ASSUME	DPP2:0x8000
+	ASSUME	DPP3:0xC000
+
+This is the same as the default after a hardware reset. It 
+corresponds to a real initialisation of
+
+	MOV 	DPP0,#0h
+	MOV 	DPP1,#1h
+	MOV 	DPP2,#2h
+	MOV 	DPP3,#3h
+
+
+2.
+
+Try to sort out how 'DGROUP' and 'CGROUP' are used (if present).
+You may leave them in place as they are ignored but take whatever
+countermeasures that may be necessary.
+
+
+3.
+
+Change
+
+named	SECTION	DATA
+to
+	SEG	named
+named
+
+and
+
+namec	SECTION	CODE
+to
+	SEG	namec
+namec
+
+This makes it possible to use 'namec' and 'named' in 'ASSIGN DPPn:named'.
+
+Note that the start of a segment is normally done through an
+
+	ORG	startofsomething
+
+and that is only done in one place. The above examples will become
+
+	SEG	named
+named	ORG	RAM
+
+and
+
+	SEG	namec
+mamec	ORG	FLASH
+
+tpasm has a predefined segment called 'code' ment for placing code in.
+
+Lines looking like 
+
+label	PROC	xxx yyy ..
+
+can be left in place but 'label' will be ignored
+
+'PUBLIC', 'GLOBAL', 'NAME', REGDEF' 'ENDP' and 'SSKDEF' are also ignored
+by tpasm. They are (among other things) there to help the assembler to
+look after you as if you don't know what you are doing :-)
+
+ 
+Comment out or remove all 'ENDS'-s as they are in conflict with tpasms own
+'ends' that closes a switch directive.
+
+
+4.
+
+Remove all "types" appended to same variables. That is 'variable:type'
+becomes just 'variable'. Consider the effect of doing so. It may affect
+the memory used. Also check if 'JMP' and 'CALL' are used. They must be
+replaced by 'JMPA'/'JMPR' and 'CALLA'/'CALLR' respectively. tpasm does
+not (yet) decide for you!
+
+
+5.
+
+Change string delimiters in 'DB' statements from single quotes /'/ to
+double quotes /"/. See the file MANUAL.TXT for a complete description
+of the formats used.
+
+
+6.
+
+Make sure that there is no label called 'SYSTEM' or 'NOTHING'. These
+words are reserved and defined in 'REG_cputype.INC' .
+
+
+7.
+
+Make sure that in all places where a DPPn *register* ( not a prefix )
+is to be loaded with a page number the name of the page is prefixed
+by '#PAG'. ( Else the register will be loaded with the segment offset! )
+
+'ASSUME' operands are always taken as memory addresses and the 'PAG'
+operator is implied and must not be used.
+If you want to give a real page number use the form
+
+	ASSUME	DPPn: value<<14
+
+8.
+
+Verify that all 'EXTRN' and 'EXTERNAL' references make sense when all
+modules are assembled together via 'INCLUDE's. Remove all 'EXTRN' and
+'EXTERNAL' if you like. They are ignored by tpasm.
+
+
+9.
+
+Consider changing 'LIT' to 'EQU' everywhere a label that may be used in
+an 'ASSUME', 'ORG' or other directive is defined. This may be a major
+problem in converting to tpasm. tpasm does not do literal substitution
+on anything but operands of ordinary instructions and that only once.
+This limits the ways of writing header files since you can't nest sub-
+stitutions. A typical example is the definitions of bits in registers:
+
+PSW	EQU	0xFF10		; We can't use LIT here
+IEN	LIT	PSW.11		; if we want this to work
+
+	BSET	IEN		; when we come here
+
+Notice that 'LIT' is the same as 'ALIAS' to tpasm. The only difference
+is that 'ALIAS' takes double quotes around strings and 'LIT' expects
+single quotes if used at all.
+
+
+10.
+
+'DB' cant't take expressions containing the operators 'PAG', 'POF', 'SEG'
+and 'SOF'.
+Replace 'SEG op' with 'op>>16' and 'SOF op' with 'op&0xFFFF'
+Replace 'PAG op' with 'op>>14' and 'POF op' with 'op&0x3FFF'
+
+11.
+
+Take a look at how negative values are used. This differs between other
+assemblers! For example
+
+	MOV	R0,#-4
+
+may be ok but with tpasm you will have to make it
+
+	MOV	R0,#( -4&0xFFFF )
+
+since -4 is internally stored as 0xFFFFFFFC and that does not fit into
+sixteen bits. Values are signed 32 bit integers when evaluated but they are
+currently not downsized to signed values. In case of DW the value is simply
+'anded' with 0xFFFF. Instructions taking immediate operands accept only
+the range 0 - 0xFFFF.
+
+

@@ -1,0 +1,26 @@
+To install tpasm, just type
+
+make
+
+In the outermost directory.
+
+Then, assuming it compiled properly, you will have an executable
+called "tpasm" (also located in the outer directory).
+
+If you want to place it into /usr/local/bin, you can
+type:
+
+make install
+
+That's it :-)
+
+If you experience any problems during the build, or any warnings
+from your compiler, please email to let me know. Thanks.
+
+NOTE: There is a directory called "include" in the tpasm source
+tree which contains header files which are useful for various
+processor families. Currently, none of these files is installed
+anywhere when you issue "make install".
+
+Todd Squires
+squirest@ct0.com
