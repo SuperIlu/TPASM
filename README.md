@@ -8,6 +8,6 @@ This is a copy of the official TPASM sources from [http://www.sqrt.com/](http://
 * **tpasm-1.11.dev**: Projectfile for [Dev-Cpp](https://sourceforge.net/projects/orwelldevcpp/)
 
 ## Binaries
-The DOS binaries were created with DJGPP, gcc version XX.YY.
+The DOS binaries were created with DJGPP, gcc version 8.2.0.
 
 The WIN32 binaries were created using Dev-Cpp 5.11 and TDM-GCC 4.9.2.
