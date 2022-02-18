@@ -5,9 +5,9 @@ This is a copy of the official TPASM sources from [http://www.sqrt.com/](http://
 
 ## Added files
 * **Makefile.dj2**: Makefile to build TPASM using [DJGPP2](http://www.delorie.com/djgpp/). You will need a DOS/Windows system supporting 16-Bit binaries and LFN (long file names) to build. E.g.: [FreeDOS](http://www.freedos.org/), [DOSBox-LFN](https://sourceforge.net/projects/dosbox-svn-lfn/) or Win9x.
-* **tpasm-1.11.dev**: Projectfile for [Dev-Cpp](https://sourceforge.net/projects/orwelldevcpp/)
+* **tpasm-1.12.dev**: Projectfile for [Dev-Cpp](https://sourceforge.net/projects/orwelldevcpp/)
 
 ## Binaries
-The DOS binaries were created with DJGPP, gcc version 8.2.0.
+The DOS binaries were created with DJGPP, gcc version 7.2.0.
 
 The WIN32 binaries were created using Dev-Cpp 5.11 and TDM-GCC 4.9.2.

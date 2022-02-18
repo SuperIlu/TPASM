@@ -98,8 +98,13 @@ static void vReportComplaint(WHERE_FROM *whereFrom,bool isError,const char *form
 // if isError is true, the comlpaint will be reported as an error,
 // otherwise as a warning
 {
+	va_list
+		argsCopy;
+
 	if(isError||displayWarnings)
 	{
+		va_copy(argsCopy,args);		// need copy to use the args multiple times
+
 		if(whereFrom)
 		{
 			vReportMessage(whereFrom->file?STNodeName(whereFrom->file):NULL,whereFrom->fileLineNumber,isError?"error  ":"warning",format,args);
@@ -119,7 +124,7 @@ static void vReportComplaint(WHERE_FROM *whereFrom,bool isError,const char *form
 			{
 				fprintf(listFile,"**** WARNING: ");
 			}
-			vfprintf(listFile,format,args);
+			vfprintf(listFile,format,argsCopy);
 		}
 		if(isError)
 		{

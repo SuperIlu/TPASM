@@ -1,10 +1,10 @@
 [Project]
-FileName=tpasm-1.11.dev
+FileName=tpasm-1.12.dev
 Name=tpasm
 Type=1
 Ver=2
 ObjFiles=
-Includes=D:\_DEVEL\git\TPASM-build\tpasm1.11
+Includes=E:\_DEVEL\GitHub\TPASM
 Libs=
 PrivateResource=
 ResourceIncludes=
@@ -19,7 +19,7 @@ ObjectOutput=
 LogOutput=
 LogOutputEnabled=0
 OverrideOutput=0
-OverrideOutputName=tpasm-1.11.exe
+OverrideOutputName=tpasm-1.12.exe
 HostApplication=
 UseCustomMakefile=0
 CustomMakefile=
@@ -51,7 +51,7 @@ AutoIncBuildNr=0
 SyncProduct=1
 
 [Unit18]
-FileName=tpasm1.11\processors\68hc11.c
+FileName=processors\68hc11.c
 CompileCpp=1
 Folder=
 Compile=1
@@ -61,7 +61,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit21]
-FileName=tpasm1.11\processors\6809.c
+FileName=processors\6809.c
 CompileCpp=1
 Folder=
 Compile=1
@@ -71,7 +71,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit22]
-FileName=tpasm1.11\processors\8051.c
+FileName=processors\8051.c
 CompileCpp=1
 Folder=
 Compile=1
@@ -81,7 +81,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit23]
-FileName=tpasm1.11\processors\avr.c
+FileName=processors\avr.c
 CompileCpp=1
 Folder=
 Compile=1
@@ -91,7 +91,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit25]
-FileName=tpasm1.11\processors\ctxp1.c
+FileName=processors\ctxp1.c
 CompileCpp=1
 Folder=
 Compile=1
@@ -101,7 +101,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit26]
-FileName=tpasm1.11\processors\pic.c
+FileName=processors\pic.c
 CompileCpp=1
 Folder=
 Compile=1
@@ -111,7 +111,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit29]
-FileName=tpasm1.11\outfiles\intel_seg.c
+FileName=outfiles\intel_seg.c
 CompileCpp=1
 Folder=
 Compile=1
@@ -121,7 +121,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit31]
-FileName=tpasm1.11\outfiles\sunplus_sym.c
+FileName=outfiles\sunplus_sym.c
 CompileCpp=1
 Folder=
 Compile=1
@@ -131,7 +131,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit32]
-FileName=tpasm1.11\outfiles\text_sym.c
+FileName=outfiles\text_sym.c
 CompileCpp=1
 Folder=
 Compile=1
@@ -141,7 +141,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit1]
-FileName=tpasm1.11\globals.c
+FileName=globals.c
 CompileCpp=1
 Folder=
 Compile=1
@@ -151,7 +151,7 @@ OverrideBuildCmd=0
 BuildCmd=$(CPP) -c globals.c -o globals.o $(CXXFLAGS)
 
 [Unit2]
-FileName=tpasm1.11\tpasm.c
+FileName=tpasm.c
 CompileCpp=1
 Folder=
 Compile=1
@@ -161,7 +161,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit3]
-FileName=tpasm1.11\memory.c
+FileName=memory.c
 CompileCpp=1
 Folder=
 Compile=1
@@ -171,7 +171,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit4]
-FileName=tpasm1.11\files.c
+FileName=files.c
 CompileCpp=1
 Folder=
 Compile=1
@@ -181,7 +181,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit5]
-FileName=tpasm1.11\alias.c
+FileName=alias.c
 CompileCpp=1
 Folder=
 Compile=1
@@ -191,7 +191,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit6]
-FileName=tpasm1.11\context.c
+FileName=context.c
 CompileCpp=1
 Folder=
 Compile=1
@@ -201,7 +201,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit7]
-FileName=tpasm1.11\expression.c
+FileName=expression.c
 CompileCpp=1
 Folder=
 Compile=1
@@ -211,7 +211,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit8]
-FileName=tpasm1.11\label.c
+FileName=label.c
 CompileCpp=1
 Folder=
 Compile=1
@@ -221,7 +221,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit9]
-FileName=tpasm1.11\listing.c
+FileName=listing.c
 CompileCpp=1
 Folder=
 Compile=1
@@ -231,7 +231,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit10]
-FileName=tpasm1.11\macro.c
+FileName=macro.c
 CompileCpp=1
 Folder=
 Compile=1
@@ -241,7 +241,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit11]
-FileName=tpasm1.11\parser.c
+FileName=parser.c
 CompileCpp=1
 Folder=
 Compile=1
@@ -251,7 +251,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit12]
-FileName=tpasm1.11\pseudo.c
+FileName=pseudo.c
 CompileCpp=1
 Folder=
 Compile=1
@@ -261,7 +261,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit13]
-FileName=tpasm1.11\segment.c
+FileName=segment.c
 CompileCpp=1
 Folder=
 Compile=1
@@ -271,7 +271,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit14]
-FileName=tpasm1.11\symbols.c
+FileName=symbols.c
 CompileCpp=1
 Folder=
 Compile=1
@@ -281,7 +281,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit15]
-FileName=tpasm1.11\outfile.c
+FileName=outfile.c
 CompileCpp=1
 Folder=
 Compile=1
@@ -291,7 +291,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit16]
-FileName=tpasm1.11\processors.c
+FileName=processors.c
 CompileCpp=1
 Folder=
 Compile=1
@@ -301,7 +301,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit17]
-FileName=tpasm1.11\support.c
+FileName=support.c
 CompileCpp=1
 Folder=
 Compile=1
@@ -311,7 +311,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit19]
-FileName=tpasm1.11\processors\6502.c
+FileName=processors\6502.c
 CompileCpp=1
 Folder=
 Compile=1
@@ -321,7 +321,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit20]
-FileName=tpasm1.11\processors\6805.c
+FileName=processors\6805.c
 CompileCpp=1
 Folder=
 Compile=1
@@ -331,7 +331,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit24]
-FileName=tpasm1.11\processors\c166.c
+FileName=processors\c166.c
 CompileCpp=1
 Folder=
 Compile=1
@@ -341,7 +341,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit27]
-FileName=tpasm1.11\processors\sunplus.c
+FileName=processors\sunplus.c
 CompileCpp=1
 Folder=
 Compile=1
@@ -351,7 +351,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit28]
-FileName=tpasm1.11\processors\z80.c
+FileName=processors\z80.c
 CompileCpp=1
 Folder=
 Compile=1
@@ -361,7 +361,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit30]
-FileName=tpasm1.11\outfiles\mot_seg.c
+FileName=outfiles\mot_seg.c
 CompileCpp=1
 Folder=
 Compile=1
@@ -371,7 +371,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit33]
-FileName=tpasm1.11\outfiles\text_incl.c
+FileName=outfiles\text_incl.c
 CompileCpp=1
 Folder=
 Compile=1

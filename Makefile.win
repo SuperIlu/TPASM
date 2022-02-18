@@ -1,67 +1,124 @@
-# make file for tpasm -- win32 version
+# Project: tpasm
+# Makefile created by Dev-C++ 5.11
 
-DEBUGGING=OFF
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+OBJ      = globals.o tpasm.o memory.o files.o alias.o context.o expression.o label.o listing.o macro.o parser.o pseudo.o segment.o symbols.o outfile.o processors.o support.o processors/68hc11.o processors/6502.o processors/6805.o processors/6809.o processors/8051.o processors/avr.o processors/c166.o processors/ctxp1.o processors/pic.o processors/sunplus.o processors/z80.o outfiles/intel_seg.o outfiles/mot_seg.o outfiles/sunplus_sym.o outfiles/text_sym.o outfiles/text_incl.o
+LINKOBJ  = globals.o tpasm.o memory.o files.o alias.o context.o expression.o label.o listing.o macro.o parser.o pseudo.o segment.o symbols.o outfile.o processors.o support.o processors/68hc11.o processors/6502.o processors/6805.o processors/6809.o processors/8051.o processors/avr.o processors/c166.o processors/ctxp1.o processors/pic.o processors/sunplus.o processors/z80.o outfiles/intel_seg.o outfiles/mot_seg.o outfiles/sunplus_sym.o outfiles/text_sym.o outfiles/text_incl.o
+LIBS     = -L"E:/_TOOLS/Dev-Cpp/MinGW64/lib32" -L"E:/_TOOLS/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib32" -static-libgcc -m32
+INCS     = -I"E:/_TOOLS/Dev-Cpp/MinGW64/include" -I"E:/_TOOLS/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"E:/_TOOLS/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"E:/_DEVEL/GitHub/TPASM"
+CXXINCS  = -I"E:/_TOOLS/Dev-Cpp/MinGW64/include" -I"E:/_TOOLS/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"E:/_TOOLS/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"E:/_TOOLS/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++" -I"E:/_DEVEL/GitHub/TPASM"
+BIN      = tpasm-1.12.exe
+CXXFLAGS = $(CXXINCS) -O2 -m32
+CFLAGS   = $(INCS) -O2 -m32
+RM       = rm.exe -f
 
-OUTEXE=tpasm.exe
+.PHONY: all all-before all-after clean clean-custom
 
-CC=cl
-LINK=link
+all: all-before $(BIN) all-after
 
-# compiler options in use:
-#
-# /c	compile without linking
-# /O2	optimize for speed
-# /MD	use MSVCRT DLL
-# /W3	warning level 3
-# /TP	compile as c++
-#
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
 
-CC_FLAGS=/nologo /c /O2 /MD /W3 /TP /I "." /D strncasecmp=strnicmp /D strcasecmp=stricmp
-LINK_FLAGS=/nologo /subsystem:console /incremental:no /out:"$(OUTEXE)"
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
 
-OBJS=\
-	"globals.obj" \
-	"tpasm.obj" \
-	"memory.obj" \
-	"files.obj" \
-	"symbols.obj" \
-	"label.obj" \
-	"segment.obj" \
-	"pseudo.obj" \
-	"parser.obj" \
-	"expression.obj" \
-	"context.obj" \
-	"alias.obj" \
-	"macro.obj" \
-	"listing.obj" \
-	"outfile.obj" \
-	"processors.obj" \
-	"support.obj" \
-	"outfiles/intel_seg.obj" \
-	"outfiles/mot_seg.obj" \
-	"outfiles/text_sym.obj" \
-	"outfiles/sunplus_sym.obj" \
-	"processors/6805.obj" \
-	"processors/68hc11.obj" \
-	"processors/6502.obj" \
-	"processors/sunplus.obj" \
-	"processors/8051.obj" \
-	"processors/pic.obj" \
-	"processors/avr.obj" \
-	"processors/z80.obj"
+globals.o: globals.c
+	$(CPP) -c globals.c -o globals.o $(CXXFLAGS)
 
-all : "$(OUTEXE)"
+tpasm.o: tpasm.c
+	$(CPP) -c tpasm.c -o tpasm.o $(CXXFLAGS)
 
-clean:
-	del *.obj
-	del $(OUTEXE)
+memory.o: memory.c
+	$(CPP) -c memory.c -o memory.o $(CXXFLAGS)
 
-cleanall:
-	del *.obj
-	del $(OUTEXE)
+files.o: files.c
+	$(CPP) -c files.c -o files.o $(CXXFLAGS)
 
-"$(OUTEXE)" : $(OBJS)
-    $(LINK) $(LINK_FLAGS) $(OBJS)
+alias.o: alias.c
+	$(CPP) -c alias.c -o alias.o $(CXXFLAGS)
 
-.c.obj:
-	$(CC) $(CC_FLAGS) $*.c /Fo$@
+context.o: context.c
+	$(CPP) -c context.c -o context.o $(CXXFLAGS)
+
+expression.o: expression.c
+	$(CPP) -c expression.c -o expression.o $(CXXFLAGS)
+
+label.o: label.c
+	$(CPP) -c label.c -o label.o $(CXXFLAGS)
+
+listing.o: listing.c
+	$(CPP) -c listing.c -o listing.o $(CXXFLAGS)
+
+macro.o: macro.c
+	$(CPP) -c macro.c -o macro.o $(CXXFLAGS)
+
+parser.o: parser.c
+	$(CPP) -c parser.c -o parser.o $(CXXFLAGS)
+
+pseudo.o: pseudo.c
+	$(CPP) -c pseudo.c -o pseudo.o $(CXXFLAGS)
+
+segment.o: segment.c
+	$(CPP) -c segment.c -o segment.o $(CXXFLAGS)
+
+symbols.o: symbols.c
+	$(CPP) -c symbols.c -o symbols.o $(CXXFLAGS)
+
+outfile.o: outfile.c
+	$(CPP) -c outfile.c -o outfile.o $(CXXFLAGS)
+
+processors.o: processors.c
+	$(CPP) -c processors.c -o processors.o $(CXXFLAGS)
+
+support.o: support.c
+	$(CPP) -c support.c -o support.o $(CXXFLAGS)
+
+processors/68hc11.o: processors/68hc11.c
+	$(CPP) -c processors/68hc11.c -o processors/68hc11.o $(CXXFLAGS)
+
+processors/6502.o: processors/6502.c
+	$(CPP) -c processors/6502.c -o processors/6502.o $(CXXFLAGS)
+
+processors/6805.o: processors/6805.c
+	$(CPP) -c processors/6805.c -o processors/6805.o $(CXXFLAGS)
+
+processors/6809.o: processors/6809.c
+	$(CPP) -c processors/6809.c -o processors/6809.o $(CXXFLAGS)
+
+processors/8051.o: processors/8051.c
+	$(CPP) -c processors/8051.c -o processors/8051.o $(CXXFLAGS)
+
+processors/avr.o: processors/avr.c
+	$(CPP) -c processors/avr.c -o processors/avr.o $(CXXFLAGS)
+
+processors/c166.o: processors/c166.c
+	$(CPP) -c processors/c166.c -o processors/c166.o $(CXXFLAGS)
+
+processors/ctxp1.o: processors/ctxp1.c
+	$(CPP) -c processors/ctxp1.c -o processors/ctxp1.o $(CXXFLAGS)
+
+processors/pic.o: processors/pic.c
+	$(CPP) -c processors/pic.c -o processors/pic.o $(CXXFLAGS)
+
+processors/sunplus.o: processors/sunplus.c
+	$(CPP) -c processors/sunplus.c -o processors/sunplus.o $(CXXFLAGS)
+
+processors/z80.o: processors/z80.c
+	$(CPP) -c processors/z80.c -o processors/z80.o $(CXXFLAGS)
+
+outfiles/intel_seg.o: outfiles/intel_seg.c
+	$(CPP) -c outfiles/intel_seg.c -o outfiles/intel_seg.o $(CXXFLAGS)
+
+outfiles/mot_seg.o: outfiles/mot_seg.c
+	$(CPP) -c outfiles/mot_seg.c -o outfiles/mot_seg.o $(CXXFLAGS)
+
+outfiles/sunplus_sym.o: outfiles/sunplus_sym.c
+	$(CPP) -c outfiles/sunplus_sym.c -o outfiles/sunplus_sym.o $(CXXFLAGS)
+
+outfiles/text_sym.o: outfiles/text_sym.c
+	$(CPP) -c outfiles/text_sym.c -o outfiles/text_sym.o $(CXXFLAGS)
+
+outfiles/text_incl.o: outfiles/text_incl.c
+	$(CPP) -c outfiles/text_incl.c -o outfiles/text_incl.o $(CXXFLAGS)

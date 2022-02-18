@@ -17,7 +17,7 @@ INCLUDES=-I.
 
 # new gnu compilers have a really annoying default behavior of wrapping
 # error message lines. The default should be NO-WRAPPING.
-OPTIONS=-O2 -Wall -x c++ -fmessage-length=0 -fno-exceptions
+OPTIONS=-O3 -Wall -x c++ -fmessage-length=0 -fno-exceptions
 CFLAGS=$(INCLUDES) $(OPTIONS)
 
 OBJECTS = \

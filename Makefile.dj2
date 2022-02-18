@@ -19,7 +19,8 @@ INCLUDES=-I.
 # error message lines. The default should be NO-WRAPPING.
 OPTIONS=-O2 -Wall -fmessage-length=0 -fno-exceptions
 CFLAGS=$(INCLUDES) $(OPTIONS)
-CC=gpp
+CC=i586-pc-msdosdjgpp-c++
+STRIP=i586-pc-msdosdjgpp-strip
 
 OBJECTS = \
 	globals.o \
@@ -45,16 +46,14 @@ OBJECTS = \
 all : tpasm.exe
 
 tpasm.exe : $(OBJECTS)
-	$(CC) -O $(OBJECTS) -lstdcxx -o tpasm.exe
+	$(CC) -O $(OBJECTS) -o tpasm.exe
+	$(STRIP) tpasm.exe
 
 clean :
-	del *.o
-	del outfiles\*.o
-	del processors\*.o
-	del tpasm.exe
-
-install :
-	copy tpasm.exe c:\dos
+	rm -f *.o
+	rm -f outfiles/*.o
+	rm -f processors/*.o
+	rm -f tpasm.exe
 
 # suffix rules (this makes sure that the ".o" files
 # end up in their respective directories on all systems)

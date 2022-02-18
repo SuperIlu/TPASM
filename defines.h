@@ -1,4 +1,4 @@
-//	Copyright (C) 1999-2012 Core Technologies.
+//	Copyright (C) 1999-2021 Core Technologies.
 //
 //	This file is part of tpasm.
 //
@@ -14,7 +14,7 @@
 //	along with tpasm; see the file "LICENSE.TXT".
 
 
-#define		VERSION					"1.11"
+#define		VERSION					"1.12"
 
 #define		DEFAULT_MAX_PASSES		32			// default maximum number of passes made by the assembler
 
